@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
+const productRouter = require('./src/controllers/productsController.jsx');
 const port = 3000;
 
-app.use(cors());
+const app = express();
 app.use(express.json());
+app.use(cors());
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/', productRouter);
 
 app.listen(port, () => console.log(`API is runing in the port -> ${port}!`));
