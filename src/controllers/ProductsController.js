@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getProductBySelected } = require('../models/ProductModel');
+const { getProductByBuscape, getProductByMercadoLivre } = require('../models/ProductModel');
 
 const productRouter = new Router();
 
@@ -7,9 +7,17 @@ productRouter.get('/', (req, res) => {
   res.send('GET request to the homepage')
 })
 
-productRouter.get('/:category', async (req, res) => {
+productRouter.get('/b/:category', async (req, res) => {
   const { category } = req.params;
-  const result = await getProductBySelected(category);
+  console.log('entrei buscape')
+  const result = await getProductByBuscape(category);
+  return res.status(200).send(result);
+});
+
+productRouter.get('/m/:category', async (req, res) => {
+  const { category } = req.params;
+  console.log('entrei mercado')
+  const result = await getProductByMercadoLivre(category);
   return res.status(200).send(result);
 });
 

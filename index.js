@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/buscape', productRouter);
+app.use('/products', productRouter);
+
 
 app.listen(port, () => console.log(`API is runing in the port -> ${port}!`));
