@@ -62,7 +62,7 @@ const minerMercado = async (web, category) => {
       let $ = cheerio.load(body);
       $('.andes-card').each((index, element) => {
         const title = $(element).find('h2.ui-search-item__title').text();
-        const photo = $(element).find('img.ui-search-result-image__element').attr('src');
+        const photo = $(element).find('.slick-slide > img.ui-search-result-image__element').attr('src');
         const price = $(element).find('span.price-tag-amount').text();
         const site = $(element).find('a.ui-search-link').attr('href');
         let product = { title, photo, price, site, web, category };
